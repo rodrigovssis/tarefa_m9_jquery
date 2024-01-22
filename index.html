@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./main.css">
+<div class="container">
+<title>Lista de Tarefas</title>
+</head>
+<body>
+    
+<h1>Lista de Tarefas</h1>
+    <form id="taskForm">
+    <input type="text" id="taskInput"  placeholder="Digite a tarefa">
+    <button type="submit">Adicionar Tarefa</button>
+    </form>
+    <ul id="taskList">
+    </ul>
+
+<script>
+    document.getElementById('taskForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let taskInput = document.getElementById('taskInput').value;
+    if (taskInput.trim() !== '') {
+        let taskList = document.getElementById('taskList');
+        let newTask = document.createElement('li');
+        newTask.textContent = taskInput;
+        newTask.addEventListener('click', function() {
+        newTask.classList.toggle('completed');
+        });
+        taskList.appendChild(newTask);
+        document.getElementById('taskInput').value = '';
+    }
+    });
+</script>
+</div>
+</body>
+</html>
